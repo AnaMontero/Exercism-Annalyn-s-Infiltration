@@ -4,32 +4,21 @@ static class QuestLogic
 {
     public static bool CanFastAttack(bool knightIsAwake)
     {
-        bool canPerformAction = false;
-
-        if (!knightIsAwake)
-            canPerformAction = true;
-
-        return canPerformAction;
+        return !knightIsAwake;
     }
 
     public static bool CanSpy(bool knightIsAwake, bool archerIsAwake, bool prisonerIsAwake)
     {
-        bool canPerformAction = false;
+        bool spyCondition = knightIsAwake || archerIsAwake || prisonerIsAwake;
 
-        if (knightIsAwake || archerIsAwake || prisonerIsAwake)
-            canPerformAction = true;
-
-        return canPerformAction;
+        return spyCondition;
     }
 
     public static bool CanSignalPrisoner(bool archerIsAwake, bool prisonerIsAwake)
     {
-        bool canPerformAction = false;
+        bool signalCondition = !archerIsAwake && prisonerIsAwake;
 
-        if (!archerIsAwake && prisonerIsAwake)
-            canPerformAction = true;
-
-        return canPerformAction;
+        return signalCondition;
     }
 
     public static bool CanFreePrisoner(bool knightIsAwake, bool archerIsAwake, bool prisonerIsAwake, bool petDogIsPresent)
